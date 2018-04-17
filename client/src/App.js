@@ -4,20 +4,20 @@ import './assets/App.css';
 import React, {Component} from 'react';
 import {graphql, ApolloProvider} from 'react-apollo';
 
-import { ApolloClient } from 'apollo-boost';
-// we do not use default client(use apollo-http-link by default),
-// so brackets are required.
+import ApolloClient from 'apollo-boost';
+// if we do not use default client(use apollo-http-link by default),
+// brackets are required to import no extra default setup ApolloClient.
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 // apollo-link-http will fetch data through HTTP fetch,
 // so we use apoll-link for mocking data
-import { link } from "./graphql/link";
+// import { link } from "./graphql/link";
 import gql from "graphql-tag";
 
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link
+  uri: "http://localhost:4000/graphql"
 });
 
 const ChannelsList = ({
