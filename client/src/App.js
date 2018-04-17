@@ -34,7 +34,7 @@ const ChannelsList = ({
 		return <p>{error.message}</p>;
 	}
 	return <ul>
-		{channels.map(ch => <li key={ch.id} className="Item-list">{ch.name}</li>)}
+		{channels.map(ch => <li key={ch.id} className="Item-list li-style-1">{ch.name}</li>)}
 	</ul>;
 };
 
