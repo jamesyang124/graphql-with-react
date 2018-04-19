@@ -4,6 +4,12 @@ A playground for trying React + Apollo + GraphQL, project is following below lin
 
 https://dev-blog.apollodata.com/full-stack-react-graphql-tutorial-582ac8d24e3b
 
+## Resolver
+
+https://www.apollographql.com/docs/graphql-tools/resolvers.html#Resolver-function-signature#Resolver-obj-argument
+
+check rootValue, or first arg `obj`
+
 ## Mock Data-Fetching
 
 `apollo-test-utils` may not support `apollo-client` 2.0. There has a workaround as below code snippet:
