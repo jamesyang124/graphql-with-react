@@ -3,11 +3,13 @@ import './assets/App.css';
 import React, {Component} from 'react';
 import {ApolloProvider} from 'react-apollo';
 
-import ApolloClient from 'apollo-boost';
+import {ApolloClient} from 'apollo-boost';
 // if we do not use default client(use apollo-http-link by default),
 // brackets are required to import no extra default setup ApolloClient.
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
+import { HttpLink } from 'apollo-link-http';
+import { concat } from 'apollo-link';
+import { setContext } from "apollo-link-context";
 import ChannelsListWithData from './components/ChannelsListWithData';
 
 
@@ -15,10 +17,19 @@ import ChannelsListWithData from './components/ChannelsListWithData';
 // so we use apoll-link for mocking data
 // import { link } from "./graphql/link";
 
+const asyncLink = setContext(
+  async (request) => {
+    await new Promise((success, fail) => {
+      setTimeout(() => success(), 3000);
+    });
+  }
+);
+
+const httpLink = new HttpLink({uri: 'http://localhost:4000/graphql'});
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "http://localhost:4000/graphql"
+  link: concat(asyncLink, httpLink)
 });
 
 class App extends Component {
