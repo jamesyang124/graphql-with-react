@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "apollo-link-context": "^1.0.8"
+    "apollo-link-context": "^1.0.18"
   }
 }
